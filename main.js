@@ -36,14 +36,14 @@ function runPreview() {
 
 function toggleFullScreen() {
     const preview = document.getElementById('preview');
-    // iPad/iPhoneのSafari向けには webkitRequestFullscreen を優先的に試す
-    if (preview.webkitRequestFullscreen) {
-        preview.webkitRequestFullscreen();
-    } else if (preview.requestFullscreen) {
-        preview.requestFullscreen();
+    // クラスを付け外しして、CSSで画面いっぱいに広げる
+    preview.classList.toggle('full-view');
+    
+    // 全画面中に画面をタップしたら元に戻るようにする設定（任意）
+    if(preview.classList.contains('full-view')) {
+        alert("エディタに戻るには、もう一度ボタンを押すか全画面を解除してね");
     }
 }
-
 
 // 5. ショートカットキー (Ctrl + S) で実行
 document.addEventListener('keydown', (e) => {
